@@ -29,9 +29,9 @@ public class HomeController {
         } catch (UserException e) {
             e.printStackTrace();
             model.addAttribute(WebConstant.ERROR_MODEL_KEY, e.getMessage());
-            getLogin(model);
+            return getLogin(model);
         }
-        return WebConstant.USER_ADMIN_WEB;
+        return "redirect:" + WebConstant.USER_ADMIN_WEB;
     }
 
     public UserServices getUserServicesImp() {

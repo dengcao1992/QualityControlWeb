@@ -25,7 +25,7 @@ public class MD5Utils {
         String md5Hex = md5Hex(s + saltBuilder.toString());
         //盐插入md5编码中，每隔两字符插入
         for (int i = 0; i < LENGTH_OF_RESULT; i++){
-            if (i / 3 == 0){
+            if (i % 3 == 0){
                 resultBuilder.append(saltBuilder.toString().charAt(i / 3));
                 continue;
             }
@@ -38,13 +38,13 @@ public class MD5Utils {
         StringBuilder saltBuilder = new StringBuilder(LENGTH_OF_SALT);
         StringBuilder md5HexBuilder = new StringBuilder(LENGTH_OF_MD5);
         for (int i = 0; i < LENGTH_OF_RESULT; i++){
-            if (i / 3 == 0){
+            if (i % 3 == 0){
                 saltBuilder.append(encode.charAt(i));
                 continue;
             }
             md5HexBuilder.append(encode.charAt(i));
         }
-        if (md5HexBuilder.toString().equals(stringEncode(s + saltBuilder.toString()))){
+        if (md5HexBuilder.toString().equals(md5Hex(s + saltBuilder.toString()))){
             return true;
         }
         return false;
