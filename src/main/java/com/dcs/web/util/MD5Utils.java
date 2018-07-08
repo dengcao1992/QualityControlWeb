@@ -29,7 +29,7 @@ public class MD5Utils {
                 resultBuilder.append(saltBuilder.toString().charAt(i / 3));
                 continue;
             }
-            resultBuilder.append(md5Hex.charAt(((i / 3) * 2) + (i % 3)) - 1);
+            resultBuilder.append(md5Hex.charAt(((i / 3) * 2) + (i % 3) - 1));
         }
         return resultBuilder.toString();
     }
